@@ -11,7 +11,11 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
+    // io.emit("chat message", msg);
+    io.emit("chat message", {
+      name: msg.name,
+      message: msg.message,
+    });
   });
 });
 
